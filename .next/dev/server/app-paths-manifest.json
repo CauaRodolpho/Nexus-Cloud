@@ -1,0 +1,11 @@
+{
+  "/(app)/dashboard/backups/page": "app/(app)/dashboard/backups/page.js",
+  "/(app)/dashboard/firewall/page": "app/(app)/dashboard/firewall/page.js",
+  "/(app)/dashboard/settings/page": "app/(app)/dashboard/settings/page.js",
+  "/(app)/dashboard/support/page": "app/(app)/dashboard/support/page.js",
+  "/(marketing)/page": "app/(marketing)/page.js",
+  "/(marketing)/pricing/page": "app/(marketing)/pricing/page.js",
+  "/(marketing)/support/page": "app/(marketing)/support/page.js",
+  "/(marketing)/vps-linux/page": "app/(marketing)/vps-linux/page.js",
+  "/manifest.webmanifest/route": "app/manifest.webmanifest/route.js"
+}

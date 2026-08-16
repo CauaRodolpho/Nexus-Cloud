@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 4, "column": 0}, "map": {"version":3,"sources":["file:///C:/Users/Rodolpho/Desktop/Projetos%20Dev/VPS%20HOSPEDAGEM/3.0/Nexus-Cloud-main/src/app/(marketing)/layout.tsx"],"sourcesContent":["import { Navbar, Footer } from '@/components/layout'\n\nexport default function MarketingLayout({ children }: { children: React.ReactNode }) {\n  return (\n    <>\n      <Navbar />\n      <main id=\"main-content\">{children}</main>\n      <Footer />\n    </>\n  )\n}\n"],"names":["MarketingLayout","children","id"],"mappings":";;;;;AAAA;AAAA;AAAA;;;AAEe,SAASA,gBAAgB,EAAEC,QAAQ,EAAiC;IACjF,qBACE;;0BACE,8OAAC,gJAAM;;;;;0BACP,8OAAC;gBAAKC,IAAG;0BAAgBD;;;;;;0BACzB,8OAAC,gJAAM;;;;;;;;;;;AAGb"}}]
+}

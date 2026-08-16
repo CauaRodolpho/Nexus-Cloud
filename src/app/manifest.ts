@@ -1,0 +1,18 @@
+import type { MetadataRoute } from 'next'
+import { SITE_CONFIG } from '@/constants'
+
+export default function manifest(): MetadataRoute.Manifest {
+  return {
+    name: SITE_CONFIG.name,
+    short_name: 'NexusCloud',
+    description: SITE_CONFIG.description,
+    start_url: '/',
+    display: 'standalone',
+    background_color: '#050505',
+    theme_color: '#8B5CF6',
+    icons: [
+      { src: '/icon-192.png', sizes: '192x192', type: 'image/png' },
+      { src: '/icon-512.png', sizes: '512x512', type: 'image/png' },
+    ],
+  }
+}

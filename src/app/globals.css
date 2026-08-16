@@ -1,0 +1,285 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ==========================================================================
+   NEXUS CLOUD — DESIGN TOKENS
+   Sistema semântico de cores em HSL, consumido pelo tailwind.config.ts.
+   Trocar de tema = trocar apenas os valores destas variáveis.
+   ========================================================================== */
+
+@layer base {
+  :root {
+    /* ---- Superfícies (grafite quente — não preto/cinza-azulado genérico) ---- */
+    --background: 30 6% 98%;
+    --foreground: 30 10% 8%;
+
+    --card: 30 10% 100%;
+    --card-foreground: 30 10% 8%;
+    --card-hover: 30 14% 97%;
+
+    --popover: 30 10% 100%;
+    --popover-foreground: 30 10% 8%;
+
+    --background-secondary: 30 10% 99%;
+    --background-tertiary: 30 10% 95%;
+
+    /* ---- Marca: Circuito Vivo ---- */
+    --primary: 28 85% 50%;           /* cobre-sinal */
+    --primary-hover: 24 80% 44%;
+    --primary-light: 30 90% 58%;
+    --primary-foreground: 30 10% 8%;
+
+    --secondary: 200 70% 44%;        /* azul-circuito, uso moderado */
+    --secondary-hover: 200 75% 38%;
+    --secondary-light: 200 70% 55%;
+    --secondary-foreground: 0 0% 100%;
+
+    /* ---- Neutros ---- */
+    --muted: 30 10% 95%;
+    --muted-foreground: 30 6% 38%;
+
+    --accent: 30 10% 93%;
+    --accent-foreground: 30 10% 12%;
+
+    /* ---- Bordas / Inputs / Foco ---- */
+    --border: 30 10% 87%;
+    --border-hover: 30 8% 76%;
+    --border-active: 30 8% 66%;
+    --input: 30 10% 87%;
+    --ring: 28 85% 50%;
+
+    /* ---- Status (sinais de infraestrutura) ---- */
+    --success: 150 70% 32%;
+    --success-light: 150 65% 40%;
+    --success-foreground: 0 0% 100%;
+
+    --warning: 42 92% 42%;
+    --warning-light: 42 90% 50%;
+    --warning-foreground: 30 10% 10%;
+
+    --danger: 4 75% 48%;
+    --danger-light: 4 75% 56%;
+    --danger-foreground: 0 0% 100%;
+    --destructive: 4 75% 48%;
+    --destructive-foreground: 0 0% 100%;
+
+    --overlay: 30 10% 8%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    /* ---- Superfícies: grafite quente, não preto puro ---- */
+    --background: 30 5% 4%;
+    --foreground: 30 8% 97%;
+
+    --card: 30 6% 8%;
+    --card-foreground: 30 8% 97%;
+    --card-hover: 30 6% 11%;
+
+    --popover: 30 6% 8%;
+    --popover-foreground: 30 8% 97%;
+
+    --background-secondary: 30 5% 6%;
+    --background-tertiary: 30 6% 9%;
+
+    /* ---- Marca ---- */
+    --primary: 28 85% 55%;
+    --primary-hover: 24 88% 60%;
+    --primary-light: 32 92% 65%;
+    --primary-foreground: 30 10% 8%;
+
+    --secondary: 200 70% 50%;
+    --secondary-hover: 200 75% 56%;
+    --secondary-light: 200 75% 62%;
+    --secondary-foreground: 0 0% 100%;
+
+    /* ---- Neutros ---- */
+    --muted: 30 5% 12%;
+    --muted-foreground: 30 6% 62%;
+
+    --accent: 30 6% 13%;
+    --accent-foreground: 30 8% 96%;
+
+    /* ---- Bordas / Inputs / Foco ---- */
+    --border: 30 6% 14%;
+    --border-hover: 30 6% 20%;
+    --border-active: 30 6% 27%;
+    --input: 30 6% 14%;
+    --ring: 28 85% 55%;
+
+    /* ---- Status ---- */
+    --success: 150 65% 45%;
+    --success-light: 150 60% 55%;
+    --success-foreground: 30 10% 8%;
+
+    --warning: 42 92% 55%;
+    --warning-light: 42 90% 64%;
+    --warning-foreground: 30 10% 8%;
+
+    --danger: 4 80% 58%;
+    --danger-light: 4 85% 68%;
+    --danger-foreground: 0 0% 100%;
+    --destructive: 4 80% 58%;
+    --destructive-foreground: 0 0% 100%;
+
+    --overlay: 0 0% 100%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    color-scheme: light;
+  }
+
+  html.dark {
+    color-scheme: dark;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased transition-colors duration-200;
+    font-feature-settings: 'rlig' 1, 'calt' 1;
+  }
+
+  ::selection {
+    background-color: hsl(var(--primary) / 0.3);
+  }
+
+  /* Scrollbar — acompanha o tema ativo */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--background));
+  }
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--border));
+    border-radius: 999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--border-hover));
+  }
+
+  /* Foco visível e acessível em ambos os temas */
+  :focus-visible {
+    outline: 2px solid hsl(var(--ring));
+    outline-offset: 2px;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply tracking-tight font-display;
+  }
+
+  /* Transição suave de tema para toda a árvore de elementos visuais */
+  *,
+  *::before,
+  *::after {
+    transition-property: background-color, border-color, color, box-shadow, fill, stroke;
+    transition-duration: 200ms;
+    transition-timing-function: ease-out;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Cartão "canto de esquadro" — assinatura visual do Nexus Cloud,
+     substitui o glassmorphism/rounded-2xl genérico. */
+  .trace-card {
+    position: relative;
+    border-radius: var(--radius);
+  }
+  .trace-card::before,
+  .trace-card::after {
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    pointer-events: none;
+    border-color: hsl(var(--primary) / 0.55);
+    opacity: 0;
+    transition: opacity 300ms ease-out;
+  }
+  .trace-card::before {
+    top: -1px;
+    left: -1px;
+    border-top: 1.5px solid;
+    border-left: 1.5px solid;
+  }
+  .trace-card::after {
+    bottom: -1px;
+    right: -1px;
+    border-bottom: 1.5px solid;
+    border-right: 1.5px solid;
+  }
+  .trace-card:hover::before,
+  .trace-card:hover::after,
+  .trace-card:focus-within::before,
+  .trace-card:focus-within::after {
+    opacity: 1;
+  }
+
+  /* Sublinhado-trilha: desenha da esquerda pra direita no hover */
+  .trace-link {
+    position: relative;
+    text-decoration: none;
+  }
+  .trace-link::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 100%;
+    height: 1px;
+    background: hsl(var(--primary));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 350ms ease-out;
+  }
+  .trace-link:hover::after,
+  .trace-link:focus-visible::after {
+    transform: scaleX(1);
+  }
+}
+
+@layer components {
+  /* Pulso de sinal: anel que expande e desaparece — substitui o
+     animate-pulse genérico para indicar atividade real (servidor online). */
+  .signal-pulse {
+    position: relative;
+  }
+  .signal-pulse::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 999px;
+    background: currentColor;
+    animation: signal-ping 2.8s cubic-bezier(0.2, 0, 0.3, 1) infinite;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .signal-pulse::after {
+      animation: none;
+      opacity: 0.35;
+    }
+  }
+}
+
+@keyframes signal-ping {
+  0% {
+    transform: scale(1);
+    opacity: 0.45;
+  }
+  75%, 100% {
+    transform: scale(1.9);
+    opacity: 0;
+  }
+}
